@@ -1,7 +1,6 @@
 """ ---------------- PROBLEM 1 ----------------"""
 def equiv_to(a, m, low, high):
-    k_vals = list(range(low, high+1))
-    return [num for num in k_vals if (num - a) % m == 0]
+    return [num for num in list(range(low, high+1)) if (num - a) % m == 0]
     
 
 """ ---------------- PROBLEM 2 ----------------"""
