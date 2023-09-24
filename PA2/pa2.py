@@ -44,31 +44,28 @@ def bezout_coeffs(a, b):
     while ak != 0:
         temp_s = s1
         temp_t = t1
-        
+
         # FIXME: Update s1 according to the formula for sk
-        s1 = "FIXME: Replace this string"
+        s1 = s0 - s1 * (bk // ak)
         
         # FIXME: Update t1 according to the formula for tk
-        t1 = "FIXME: Replace this string"
+        t1 = t0 - t1 * (bk // ak)
         
         s0 = temp_s
         t0 = temp_t
         temp = bk
         
         # FIXME: Update bk and ak
-        bk = "FIXME: Replace this string"
-        ak = "FIXME: Replace this string"
-    
+        bk = ak
+        ak = temp % ak
+        
     # FIXME: Replace each string with the correct coefficients of a and b
-    return {a : "FIXME: replace this string", b : "FIXME: replace this string"}
+    return {a : s0, b : t0}
 
 
 """ ----------------- PROBLEM 3 ----------------- """
 def gcd(a,b):
-    a, b = max(a,b), min(a,b)
-    r = a % b
-    while r != 0:
-        a = b
-        b = r
-        r = a % b
-    return b
+    coefs: dict[int: int] = bezout_coeffs(a, b)
+    return abs((a * coefs[a]) + (b * coefs[b]))
+
+print(gcd(-55,-103))
