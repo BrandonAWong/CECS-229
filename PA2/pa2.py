@@ -65,7 +65,7 @@ def bezout_coeffs(a, b):
 
 """ ----------------- PROBLEM 3 ----------------- """
 def gcd(a,b):
+    if a == b:
+        return abs(a)
     coefs: dict[int: int] = bezout_coeffs(a, b)
     return abs((a * coefs[a]) + (b * coefs[b]))
-
-print(gcd(-55,-103))
