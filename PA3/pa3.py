@@ -129,7 +129,7 @@ def affine_decrypt(ciphertext, a, b):
       # encrypted letter using the decryption function for an affine
       # transformation with key (a, b) so that letter_digits holds
       # the decrypted number as a string of two digits
-      letter_digits = str((mod_inv(a, 26) * (num - b)) % 26)
+      letter_digits = str((a_inv * (num - b)) % 26)
 
       if len(letter_digits) == 1:
         # FIXME: If the letter number is between 0 - 9, inclusive,
@@ -157,7 +157,7 @@ def encryptRSA(plaintext, n, e):
 
   # FIXME: Use util.py to initialize 'digits' as a string of
   # the two-digit integers that correspond to the letters of 'text'
-  digits = letters2digits(plaintext)
+  digits = letters2digits(text)
 
   # FIXME: Use util.py to initialize 'l' with the length of each RSA block
   l = blocksize(n)
